@@ -29,10 +29,17 @@ class MainActivity : AppCompatActivity() {
         cache.addToCache("szesc", 6)
 
         cache.addToCache("siedem", 7)
+        Log.d("MARCIN", "cache: ${cache.toString()} 3");
+
+        if (!cache.isCached(6)) {
+            cache.addToCache("szesc", 6)
+
+        }
+
 
         Log.d("MARCIN", "cache: ${cache.toString()} 3");
 
-        var s = cache.tryToGetOrNull(7)
+        var s = cache.tryToGetOrNull(6)
         Log.d(
             "MARCIN", "get: ${
                 s.toString() as String
