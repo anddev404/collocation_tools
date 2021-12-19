@@ -4,13 +4,14 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import com.anddev404.cache.Cache
+import com.anddev404.timer.Timer
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-
+        var timer = Timer().apply { start() }
         var cache = Cache(3)
 
         Log.d("MARCIN", "cache: ${cache.toString()} 1");
@@ -38,12 +39,19 @@ class MainActivity : AppCompatActivity() {
 
 
         Log.d("MARCIN", "cache: ${cache.toString()} 3");
-
+        Thread.sleep(1100)
         var s = cache.tryToGetOrNull(6)
         Log.d(
             "MARCIN", "get: ${
                 s.toString() as String
             } 3"
+        );
+        Log.d(
+            "MARCIN", "time: ms: ${
+                timer.getMs()
+            } s : ${
+                timer.getSeconds()
+            }"
         );
 
 
