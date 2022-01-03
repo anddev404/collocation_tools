@@ -7,11 +7,24 @@ import com.anddev404.cache.Cache
 import com.anddev404.timer.Timer
 
 class MainActivity : AppCompatActivity() {
+
+    lateinit var timer: Timer
+
+    init {
+        Log.d(
+            "MARCIN", "init"
+        );
+
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+        timer = Timer(this, 1)
 
-        var timer = Timer().apply { start() }
+        Log.d(
+            "MARCIN", "oMNCreate"
+        );
         var cache = Cache(3)
 
         Log.d("MARCIN", "cache: ${cache.toString()} 1");
@@ -46,14 +59,21 @@ class MainActivity : AppCompatActivity() {
                 s.toString() as String
             } 3"
         );
-        Log.d(
-            "MARCIN", "time: ms: ${
-                timer.getMs()
-            } s : ${
-                timer.getSeconds()
-            }"
-        );
 
 
     }
+
+    override fun onResume() {
+        super.onResume()
+        timer.start()
+    }
+
+    override fun onPause() {
+        super.onPause()
+        timer.stop()
+        timer.getTime()
+
+    }
+
+
 }
