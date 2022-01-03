@@ -33,8 +33,8 @@ class Timer(context: Context, var activityId: Int) {
     fun getTime(): String {
 
         if (isStarted) {
-            var timeSecond = stop() / 1000.0
-            var minutes = timeSecond / 60
+            var timeSecond = stop()
+            var minutes = (timeSecond / 60).toInt()
             var seconds = Math.round(timeSecond - (60 * minutes))
 
             start()

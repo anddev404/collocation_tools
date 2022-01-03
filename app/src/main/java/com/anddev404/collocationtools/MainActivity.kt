@@ -70,9 +70,9 @@ class MainActivity : AppCompatActivity() {
 
     override fun onPause() {
         super.onPause()
+        timer.getTime()
         timer.stop()
         timer.getTime()
-
     }
 
 
